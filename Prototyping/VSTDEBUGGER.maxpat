@@ -5,11 +5,11 @@
 			"major" : 7,
 			"minor" : 3,
 			"revision" : 1,
-			"architecture" : "x64",
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 42.0, 85.0, 876.0, 913.0 ],
+		"rect" : [ 42.0, 85.0, 927.0, 913.0 ],
 		"bgcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -39,13 +39,40 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "live.gain~",
+					"numinlets" : 2,
+					"numoutlets" : 5,
+					"outlettype" : [ "signal", "signal", "", "float", "list" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 161.666672, 542.0, 61.0, 139.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "live.gain~[1]",
+							"parameter_shortname" : "live.gain~",
+							"parameter_type" : 0,
+							"parameter_mmin" : -70.0,
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_unitstyle" : 4
+						}
+
+					}
+,
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"varname" : "live.gain~[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "gain~",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 625.0, 708.666687, 22.0, 140.0 ],
+					"patching_rect" : [ 625.0, 719.666687, 22.0, 140.0 ],
 					"style" : ""
 				}
 
@@ -441,11 +468,11 @@
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 8,
+					"numoutlets" : 10,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "signal", "signal", "", "list", "int", "", "", "" ],
-					"patching_rect" : [ 73.666672, 489.0, 113.5, 25.0 ],
-					"save" : [ "#N", "vst~", "loaduniqueid", 0, ";" ],
+					"outlettype" : [ "signal", "signal", "signal", "signal", "", "list", "int", "", "", "" ],
+					"patching_rect" : [ 73.666672, 490.0, 113.5, 25.0 ],
+					"save" : [ "#N", "vst~", "loaduniqueid", 0, 1, 4, ";" ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_invisible" : 1,
@@ -461,64 +488,8 @@
 						"parameter_enable" : 1
 					}
 ,
-					"snapshot" : 					{
-						"filetype" : "C74Snapshot",
-						"version" : 2,
-						"minorversion" : 0,
-						"name" : "snapshotlist",
-						"origin" : "vst~",
-						"type" : "list",
-						"subtype" : "Undefined",
-						"embed" : 1,
-						"snapshot" : 						{
-							"pluginname" : "StereoPanner.dll",
-							"plugindisplayname" : "StereoPanner",
-							"pluginsavedname" : "~/Desktop/StereoPanner/Builds/VisualStudio2013/x64/Debug/StereoPanner.dll",
-							"pluginsaveduniqueid" : 0,
-							"version" : 1,
-							"isbank" : 0,
-							"isbase64" : 1,
-							"blob" : "60.CMlaKA....fQPMDZ....ADjdzAG....Y....A..........................................."
-						}
-,
-						"snapshotlist" : 						{
-							"current_snapshot" : 0,
-							"entries" : [ 								{
-									"filetype" : "C74Snapshot",
-									"version" : 2,
-									"minorversion" : 0,
-									"name" : "StereoPanner",
-									"origin" : "StereoPanner.dll",
-									"type" : "VST",
-									"subtype" : "AudioEffect",
-									"embed" : 1,
-									"snapshot" : 									{
-										"pluginname" : "StereoPanner.dll",
-										"plugindisplayname" : "StereoPanner",
-										"pluginsavedname" : "~/Desktop/StereoPanner/Builds/VisualStudio2013/x64/Debug/StereoPanner.dll",
-										"pluginsaveduniqueid" : 0,
-										"version" : 1,
-										"isbank" : 0,
-										"isbase64" : 1,
-										"blob" : "60.CMlaKA....fQPMDZ....ADjdzAG....Y....A..........................................."
-									}
-,
-									"fileref" : 									{
-										"name" : "StereoPanner",
-										"filename" : "StereoPanner.maxsnap",
-										"filepath" : "~/Documents/Max 7/Snapshots",
-										"filepos" : -1,
-										"snapshotfileid" : "f3caf02941007a6b597f76fe3332648f"
-									}
-
-								}
- ]
-						}
-
-					}
-,
 					"style" : "",
-					"text" : "vst~",
+					"text" : "vst~ 1 4",
 					"varname" : "vst~",
 					"viewvisibility" : 0
 				}
@@ -541,7 +512,7 @@
 							"major" : 7,
 							"minor" : 3,
 							"revision" : 1,
-							"architecture" : "x64",
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -1421,6 +1392,24 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1570,7 +1559,7 @@
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 711.666565, 446.000031, 688.249954, 446.000031, 688.249954, 93.000031, 44.833328, 93.000031 ],
+					"midpoints" : [ 711.666565, 446.000031, 688.249939, 446.000031, 688.249939, 93.000031, 44.833328, 93.000031 ],
 					"source" : [ "obj-27", 0 ]
 				}
 
@@ -1580,7 +1569,7 @@
 					"destination" : [ "obj-14", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 881.166565, 87.666687, 925.833328, 87.666687 ],
+					"midpoints" : [ 881.166565, 87.666687, 925.833313, 87.666687 ],
 					"source" : [ "obj-29", 0 ]
 				}
 
@@ -1696,19 +1685,14 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-16" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-10::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
+			"obj-10::obj-35" : [ "[5]", "Level", 0 ],
 			"obj-12" : [ "vst~", "vst~", 0 ],
-			"obj-10::obj-35" : [ "[5]", "Level", 0 ]
+			"obj-3" : [ "live.gain~[1]", "live.gain~", 0 ],
+			"obj-10::obj-21::obj-6" : [ "live.tab[3]", "live.tab[1]", 0 ],
+			"obj-16" : [ "live.gain~", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "StereoPanner.maxsnap",
-				"bootpath" : "~/Documents/Max 7/Snapshots",
-				"type" : "mx@s",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "demosound.maxpat",
 				"bootpath" : "C74:/help/msp",
 				"type" : "JSON",
