@@ -11,6 +11,8 @@
 #ifndef PLUGINPROCESSOR_H_INCLUDED
 #define PLUGINPROCESSOR_H_INCLUDED
 
+#define PI 3.14159
+
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
@@ -56,9 +58,15 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+	//Custom vars
+
+	float gui_PanAngle;
+
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmbiEncoderAudioProcessor)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AmbiEncoderAudioProcessor)
+
+	
 };
 
 

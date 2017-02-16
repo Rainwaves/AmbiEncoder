@@ -37,7 +37,8 @@
 */
 class AmbiEncoderAudioProcessorEditor  : public AudioProcessorEditor,
                                          public Timer,
-                                         public ButtonListener
+                                         public ButtonListener,
+                                         public SliderListener
 {
 public:
     //==============================================================================
@@ -52,6 +53,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void buttonClicked (Button* buttonThatWasClicked) override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
 
@@ -62,6 +64,7 @@ private:
 
     //==============================================================================
     ScopedPointer<TextButton> textButtonMystery;
+    ScopedPointer<Slider> sliderPanPosition;
 
 
     //==============================================================================
