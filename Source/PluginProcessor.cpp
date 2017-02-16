@@ -134,7 +134,8 @@ void AmbiEncoderAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 
 
 	//Convert a pan position in degrees to radians
-	float azimuth = (PI / 180.0f)*gui_PanAngle;
+	float horizontalAngle = (PI / 180.0f)*gui_PanAngle;
+	float elevationAngle = (PI / 180.0f)*gui_PanAngle2;
 
 	//Get pointers to ambisonic channels
 	float *channelDataW = buffer.getWritePointer(0);
@@ -147,10 +148,11 @@ void AmbiEncoderAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 	{
 		float audioIn = channelDataW[i]; //Temporarily store input sample
 
-		//Ambisonic encoding (horizontal only)
-		channelDataW[i] = audioIn * 0.707;
-		channelDataX[i] = audioIn * cos(azimuth);
-		channelDataY[i] - audioIn * sin(azimuth);
+		//Ambisonic encoding 
+		channelDataW[i] = audioIn * (1/sqrt(2.0f));
+		channelDataX[i] = audioIn * cos(horizontalAngle)*cos(elevationAngle);
+		channelDataY[i] = audioIn * sin(horizontalAngle)*cos(elevationAngle);
+		channelDataZ[i] = audioIn * sin(elevationAngle);
 	}
    
 }

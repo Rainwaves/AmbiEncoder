@@ -61,6 +61,7 @@ public:
 	//Custom vars
 
 	float gui_PanAngle;
+	float gui_PanAngle2;
 
 private:
     //==============================================================================

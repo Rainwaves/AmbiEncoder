@@ -33,15 +33,17 @@ AmbiEncoderAudioProcessorEditor::AmbiEncoderAudioProcessorEditor (AmbiEncoderAud
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (textButtonMystery = new TextButton ("mystery button"));
-    textButtonMystery->setButtonText (TRANS("Mystery Button!"));
-    textButtonMystery->addListener (this);
-
     addAndMakeVisible (sliderPanPosition = new Slider ("pan position"));
     sliderPanPosition->setRange (0, 360, 0);
     sliderPanPosition->setSliderStyle (Slider::LinearHorizontal);
-    sliderPanPosition->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    sliderPanPosition->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
     sliderPanPosition->addListener (this);
+
+    addAndMakeVisible (sliderPanPosition2 = new Slider ("pan position 2"));
+    sliderPanPosition2->setRange (0, 360, 0);
+    sliderPanPosition2->setSliderStyle (Slider::LinearVertical);
+    sliderPanPosition2->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
+    sliderPanPosition2->addListener (this);
 
 
     //[UserPreSize]
@@ -60,8 +62,8 @@ AmbiEncoderAudioProcessorEditor::~AmbiEncoderAudioProcessorEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    textButtonMystery = nullptr;
     sliderPanPosition = nullptr;
+    sliderPanPosition2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -85,26 +87,10 @@ void AmbiEncoderAudioProcessorEditor::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    textButtonMystery->setBounds (16, 24, 150, 24);
-    sliderPanPosition->setBounds (73, 296, 150, 24);
+    sliderPanPosition->setBounds (16, 224, 150, 24);
+    sliderPanPosition2->setBounds (72, 72, 24, 150);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
-}
-
-void AmbiEncoderAudioProcessorEditor::buttonClicked (Button* buttonThatWasClicked)
-{
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
-    if (buttonThatWasClicked == textButtonMystery)
-    {
-        //[UserButtonCode_textButtonMystery] -- add your button handler code here..
-
-        //[/UserButtonCode_textButtonMystery]
-    }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
 }
 
 void AmbiEncoderAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasMoved)
@@ -117,6 +103,12 @@ void AmbiEncoderAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasM
         //[UserSliderCode_sliderPanPosition] -- add your slider handling code here..
 		processor.gui_PanAngle = sliderPanPosition->getValue();
         //[/UserSliderCode_sliderPanPosition]
+    }
+    else if (sliderThatWasMoved == sliderPanPosition2)
+    {
+        //[UserSliderCode_sliderPanPosition2] -- add your slider handling code here..
+		processor.gui_PanAngle2 = sliderPanPosition2->getValue();
+        //[/UserSliderCode_sliderPanPosition2]
     }
 
     //[UsersliderValueChanged_Post]
@@ -148,12 +140,14 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ffffffff"/>
-  <TEXTBUTTON name="mystery button" id="24174bdcbecb5fe2" memberName="textButtonMystery"
-              virtualName="" explicitFocusOrder="0" pos="16 24 150 24" buttonText="Mystery Button!"
-              connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <SLIDER name="pan position" id="bba2d8643dc2dfb" memberName="sliderPanPosition"
-          virtualName="" explicitFocusOrder="0" pos="73 296 150 24" min="0"
-          max="360" int="0" style="LinearHorizontal" textBoxPos="TextBoxLeft"
+          virtualName="" explicitFocusOrder="0" pos="16 224 150 24" min="0"
+          max="360" int="0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
+          needsCallback="1"/>
+  <SLIDER name="pan position 2" id="d858188674f895f8" memberName="sliderPanPosition2"
+          virtualName="" explicitFocusOrder="0" pos="72 72 24 150" min="0"
+          max="360" int="0" style="LinearVertical" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"
           needsCallback="1"/>
 </JUCER_COMPONENT>
